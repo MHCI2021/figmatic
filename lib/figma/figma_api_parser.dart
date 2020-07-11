@@ -20,6 +20,8 @@ class FigmaApiManager{ //extends ChangeNotifier{
   final BaseClient http;
   Map<String, dynamic> nodes={};
   Map<String, String> screens = {};
+  Map<String, String> widgets = {};
+
   String currentScreenID;
   List pages = [];
   bool loading=true;
@@ -32,27 +34,21 @@ class FigmaApiManager{ //extends ChangeNotifier{
     _data['document']['children'].forEach((page){
       pages.add(page["name"]);
     });
-    int l= _data['document']['children'].length;
+    //int l= _data['document']['children'].length;
     var page1 = _data['document']['children'][0];
-  //   page1['children'].forEach((screen)  {
-  //         screens[screen["name"]]=screen["id"];
-  //         _getFigmaItem(screen, null);
-  //  });
+    page1['children'].forEach((screen)  {
+          screens[screen["name"]]=screen["id"];
+          _getFigmaItem(screen, null);
+   });
 
-    var s1 = page1['children'][0]; //{
-    screens[s1["name"]]=s1["id"];
-   //printJson(s1);
-     _getFigmaItem(s1, null);
-   //});
-   //printJson(page1);
-   //Get Images
+   
     List<String> ids=[];
     nodes?.forEach((nodeID, nodeData) {
         if(nodeData.containsKey("isImage")&& nodeData["isImage"]==true)ids.add(nodeID);
     });
    
     if(ids.isNotEmpty){
-      //print(ids);
+
       Map<String,dynamic> imagenodes = await _getImages(fileKey, ids);
       imagenodes.forEach((nodeID, imageUrl) {
         nodes[nodeID]["imageUrl"]= imageUrl;
@@ -97,8 +93,9 @@ class FigmaApiManager{ //extends ChangeNotifier{
       nodes[data["id"]]=parseFigmaVector(data, _screenSizeInfo);
     }else if (frames.contains(type)){
       nodes[data["id"]]=parseFigmaFrame(data, _screenSizeInfo, isRoot: _root);
+      if(nodes[data["id"]]["type"]=="COMPONENT")widgets[data["name"]]=data["id"];
       data["children"]?.forEach((childData){
-        _getFigmaItem(childData, _screenSizeInfo);
+        _getFigmaItem(childData, ScreenSizeInfo.fromJson(data));
       });
     }
   }
@@ -106,7 +103,14 @@ class FigmaApiManager{ //extends ChangeNotifier{
 
 
 
-
+ // var s1 = page1['children'][0]; //{
+    // screens[s1["name"]]=s1["id"];
+    // widgets[s1["name"]]=s1["id"];
+   //printJson(s1);
+ //    _getFigmaItem(s1, null);
+   //});
+   //printJson(page1);
+   //Get Images
   // String currentScreen;
   // String currentPage;
   // nodes.forEach((nodeID, nodeData) {
@@ -115,3 +119,4 @@ class FigmaApiManager{ //extends ChangeNotifier{
   //   String prettyprint = encoder.convert(nodeData);
   //   print(prettyprint);
   // });
+      //print(ids);

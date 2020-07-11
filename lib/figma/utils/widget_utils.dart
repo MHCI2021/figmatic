@@ -12,16 +12,30 @@ import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
 
 
-Widget positionedWrapper({@required Rect windowRect, @required child, double pcntSize=1.0, })
-=> Positioned(
+Widget positionedWrapper({@required Rect windowRect, @required Widget  child, double pcntSize=1.0, })
+=> child==null?null:Positioned(
           top:pcntSize*windowRect.top,
           left: pcntSize*windowRect.left,
-        child: SizedBox(
           height:pcntSize*windowRect.height,
           width:pcntSize*windowRect.width,
-          child: child
-        )
+        child: child
+        // SizedBox(
+        //   height:pcntSize*windowRect.height,
+        //   width:pcntSize*windowRect.width,
+        //   child: child
+        // )
 );
+
+String positionedWrapperString({@required Rect windowRect, @required String child, double pcntSize=1.0, })
+=> '''Positioned( 
+          top:${(pcntSize*windowRect.top).toStringAsFixed(3)},left: ${(pcntSize*windowRect.left).toStringAsFixed(3)},
+          height:${(pcntSize*windowRect.height).toStringAsFixed(3)}, width:${(pcntSize*windowRect.width).toStringAsFixed(3)},
+          child: $child),''';
+String containerWrapperString({@required Rect windowRect, @required String child, double pcntSize=1.0, })
+=> '''SizedBox( 
+          height:${(pcntSize*windowRect.height).toStringAsFixed(3)}, width:${(pcntSize*windowRect.width).toStringAsFixed(3)},
+          child: $child),''';
+
 
 
 
@@ -126,6 +140,17 @@ class FigmaStyles{
               gradient: _getGradient(), //Todo
               backgroundBlendMode: _getBlendMode(),
             );
+  }
+
+   String getDecorationString(String color){
+    // check if visible/ pass through
+      
+    if(data.containsKey("blendMode") && data["blendMode"]=="PASS_THROUGH"){
+          return "null,";
+    }
+    return '''BoxDecoration(
+              color:$color,
+            ),''';
   }
 
   // List<BoxShadow> _getBoxShadows(){

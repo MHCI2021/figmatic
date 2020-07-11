@@ -1,16 +1,150 @@
-# figmatic
 
-A new Flutter project.
+# Figmatic <br>
+**A Real Time Figma to Flutter UI Tool**
 
-## Getting Started
+Project Overview(todo)
+**Relavent Resources**
+- [Lucid Chart](https://app.lucidchart.com/invitations/accept/c0e0ac52-e95d-467d-83f0-0afded2a9faa)
+- [Delaware Makes Slack](https://join.slack.com/t/delawaremakes/shared_invite/zt-ee1k7e45-lseLrkf_Jt_heZG34eBMtA)
+- [Delaware COVID19 3D Printing](https://www.facebook.com/groups/1624749267680924)
 
-This project is a starting point for a Flutter application.
+- [Figma Plugin Docs](https://www.figma.com/plugin-docs/intro/)
+- [Figma API Docs](https://www.figma.com/plugin-docs/intro/)
+- [Awesome Figma](https://github.com/ilyalesik/awesome-figma)
+- [Figma API Demo](https://github.com/figma/figma-api-demo)
+https://github.com/thomas-lowry/figma-plugins-on-github#plugins
+    **Related Software**
+- [figma to flutter](https://aloisdeniel.github.io/figma-to-flutter/) by aloisdeniel. This is the closest project to mine. The main difference is that it is just a code generator, I plan to extend my project to include more organizational and prototyping features. He does into detail about it [here](https://aloisdeniel.github.io/introducing-figma-to-flutter/) [Here is a demo of the tool](https://aloisdeniel.github.io/figma-to-flutter/)
 
-A few resources to get you started if this is your first Flutter project:
+- [html-to-figma plugin](https://github.com/BuilderIO/html-to-figma)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [flutter path draw package](https://github.com/dnfield/flutter_path_drawing) for svg rendering
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    **Existing Products**
+    Here are a few existing products that build on top of Figma or Sketch
+    - [flinto](https://www.flinto.com/) 
+
+## Getting Started<br>
+This site is written in Flutter, a cross-platform UI toolkit from google that uses the Dart programming language.
+
+It allows for a flexible way to organize, view, and build upon Figma projects. 
+
+
+To get an introduction to Flutter, check out Google's Codelabs that enable you to learn the fundamentals online without downloading anything.
+ - For a comparison between flutter and other platforms check out these articles:
+      - [Introduction to Flutter for Web Developers](https://flutter.dev/docs/get-started/flutter-for/web-devs)
+      - [Introduction to Flutter for React Native Developers](https://flutter.dev/docs/get-started/flutter-for/react-native-devs)
+      - [Introduction to Flutter for IOS Developers](https://flutter.dev/docs/get-started/flutter-for/ios-devs)
+      -[Introduction to Flutter for Android Developers](https://flutter.dev/docs/get-started/flutter-for/android-devs)
+- To understand how flutter web works check out this [Web Support for Flutter](https://flutter.dev/web) article
+
+
+**Required Software** <br/>
+If you are interested in contributing, you'll need to download the following software
+- [Flutter Web Install SDK](https://flutter.dev/docs/get-started/web)
+      - [Windows Install Instructions](https://flutter.dev/docs/get-started/install/windows)    
+      - [MacOS Install Instructions](https://flutter.dev/docs/get-started/install/macos)       
+      - [Linux Install Instructions](https://flutter.dev/docs/get-started/install/linux)   
+      - [ChromeOS Install Instructions](https://flutter.dev/docs/get-started/install/chromeos])
+- [Chrome](https://www.google.com/chrome/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Git](https://git-scm.com/)
+
+## Flutter Environment Set Up <br/>
+For this project, we only use Flutter Web, so to get that running on your computer, follow the instructions on [Flutter Web Install SDK](https://flutter.dev/docs/get-started/web). 
+
+The first step is to download the Flutter SDK, no need to set up the Android or IOS development environments. Once you install the SDK, run the command:
+```
+flutter doctor
+```
+You should see something similar to what's shown below:
+
+[todo]
+
+Once Flutter is successfully installed, you will need to install [Chrome](https://www.google.com/chrome/)(if it's not already installed) so that you can run your code in the browser during development
+
+Lastly, you will likely want to use Visual Studio Code as your code editor. Go to [Visual Studio Code](https://code.visualstudio.com/) to download the software. Then go to the "extensions" tab on the side and add the flutter extension and dart extension.
+
+[picture below]
+
+
+**Testing Flutter Install** <br/>
+Before you try running this project, make sure flutter is working properly by creating a new project.
+/*
+Todo
+*/
+
+## Setting Project Up Locally <br/>
+Once you clone this go to
+
+
+
+
+
+## Project Overview <br/>
+
+
+**Project File Structure**<br>
+- state/: Directory containing the majority of the logic of the site
+        - AppState- the AppState class contains much of the core logic including initiating the database, handling forms, and dealing with user login
+        - service_locator - I use a package called get_it that enables me to get a specific instance of a class from anywhere in the app. The service locator is where I initiate the classes that I want to be able to access. 
+- pages/: All of the website pages are stored in their respective folder. The ___page.dart folder contains the main page component then any page specific components will be in the components folder
+- counters/: Directory models that store count information on the dirrent items(designs, requests etc)
+- main.dart - the app is created in the main.dart file, it is the root of the entire project
+- root_widget.dart - This widget is a wrapper around the current page widget. It includes the appbar and is where overlays are added to the screen.
+- theme.dart - In order to be able to change certian aspects of the design more easily, I've put most of the color and font size info into this file.
+```
+lib
+├── main.dart
+├── root_widget.dart
+├── routes.dart
+├── theme.dart
+├── state
+│   ├── service_locator.dart
+│   ├── app_state.dart
+│   ├── db_interface.dart
+│   ├── forms_tabs.dart
+│   └── docs_repo.dart
+├── pages
+│   ├── about_us
+│   │    └── about_us_page.dart
+│   ├── designs
+│   │    └── designs_page.dart
+│   ├── profile
+│   │    └── profile_page.dart
+│   ├── resources
+│   │    └── resources_page.dart
+│   ├── home
+│   |    ├── home_page.dart
+│   │    └── components
+│   │          ├── count.dart
+│   │          ├── intro.dart
+│   │          ├── maker_section.dart
+│   │          └── request_section.dart
+│   ├── locations
+│   |    ├── locations.dart
+│   │    └── components
+│   │          ├── map_widget.dart
+│   │          ├── claim_tile.dart
+│   │          └── request_tile.dart
+├── counters
+│   ├── design_counts.dart
+│   ├── group_counts.dart
+│   ├── org_counts.dart
+│   └──  request_counts.dart
+
+
+```
+
+
+
+**Setting Up Project Locally**
+
+
+
+
+**Dependencies**
+
+
+
+

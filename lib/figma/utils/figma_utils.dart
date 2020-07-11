@@ -24,6 +24,7 @@ class ScreenSizeInfo{
               "height":absoluteBoundingBox['height']
     };
   }
+
 }
 
 

@@ -6,15 +6,13 @@ import '../../utils.dart';
 import '../utils/figma_utils.dart';
 
 Map<String,dynamic> parseFigmaFrame(Map<String,dynamic> figmaData, ScreenSizeInfo screenSizeInfo, {bool isRoot=false}){
-   print(
-        '****************************** ${figmaData["name"]} ******************************');
-  figmaData.forEach((key, value) {
-    if(key!="children"){
-      //print(key);
-      printJsonDynamic(value, key: key);
-      
-    }
-  });
+ //  print( '****************************** ${figmaData["name"]} ******************************');
+  // figmaData.forEach((key, value) {
+  //   if(key!="children"){
+  //     //print(key);
+  //     printJsonDynamic(value, key: key);
+  //   }
+  // });
   
  //parseFrameColor(figmaData),
     // if(Random().nextInt(20)==3){
@@ -67,13 +65,17 @@ Map<String,dynamic> parseFigmaFrame(Map<String,dynamic> figmaData, ScreenSizeInf
         "class":"frame",
         "name":figmaData["name"],
         "isRoot":isRoot,
+        "layoutMode":(figmaData.containsKey("layoutMode"))?
+                          figmaData["layoutMode"]=="HORIZONTAL"?"Row":
+                          figmaData["layoutMode"]=="VERTICAL"?"Column"
+                          :"Stack":"Stack",
         //"blendMode":,
         "style":_parseStyle(),
         "positioning":screenSizeInfo.toFigmaJson(data: figmaData),
         "children":figmaData.containsKey("children")?figmaData["children"].map((childData)=>childData["id"]).toList():[],
          "transitionNode":null
       };
-    //  print(out);
+    // printJson(out);
 
   return out;
 }
