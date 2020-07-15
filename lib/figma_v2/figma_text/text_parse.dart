@@ -1,6 +1,6 @@
 
 
-import 'package:figmatic/figma/utils/color_utils.dart';
+import 'package:figmatic/figma_v2/utils/color_utils.dart';
 
 import '../../utils.dart';
 import '../utils/figma_utils.dart';

@@ -1,7 +1,7 @@
 
 import 'dart:math';
 
-import 'package:figmatic/figma/utils/color_utils.dart';
+import 'package:figmatic/figma_v2/utils/color_utils.dart';
 
 import '../../utils.dart';
 import '../utils/figma_utils.dart';
@@ -9,7 +9,7 @@ import '../utils/parse_utils.dart';
 
 
 Map<String,dynamic> parseFigmaVector(Map<String,dynamic> figmaData, ScreenSizeInfo screenSizeInfo,){
-    //printJson(figmaData);
+    printJson(figmaData);
     Map<String,dynamic>  _parseStyle(){
         return {
           "color":

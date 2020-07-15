@@ -1,0 +1,801 @@
+[
+    {
+        "id": "5:3",
+        "name": "Rectangle 17",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": 567,
+          "width": 1440,
+          "height": 3940
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1156
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 3940
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9372549057006836,
+              "b": 0.9333333373069763,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L1440 0L1440 3940L0 3940L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "2:48",
+        "name": "Rectangle 7&&image=http://kurtwinterdesign.com/wp-content/uploads/2018/06/Debenhams-Hero@2x.jpg",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": -589,
+          "width": 1440,
+          "height": 729.171630859375
+        },
+        "constraints": {
+          "vertical": "SCALE",
+          "horizontal": "SCALE"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 729.171630859375
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "IMAGE",
+            "scaleMode": "FILL",
+            "imageRef": "522a0e4d3cef1ad6fde56d3148056aa0ecdbd9c6"
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L1440 0L1440 729.172L0 729.172L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": [
+          {
+            "type": "BACKGROUND_BLUR",
+            "visible": true,
+            "radius": 4
+          },
+          {
+            "type": "DROP_SHADOW",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.25
+            },
+            "blendMode": "NORMAL",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "radius": 4
+          },
+          {
+            "type": "INNER_SHADOW",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.25
+            },
+            "blendMode": "NORMAL",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "radius": 4
+          }
+        ]
+      },
+      {
+        "id": "42:1",
+        "name": "Rectangle 2",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": -589,
+          "width": 1440,
+          "height": 106
+        },
+        "constraints": {
+          "vertical": "SCALE",
+          "horizontal": "SCALE"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 106
+        },
+        "fills": [
+          {
+            "opacity": 0,
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "42:3",
+        "name": "Vector",
+        "type": "VECTOR",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 629,
+          "y": -571,
+          "width": 60,
+          "height": 60
+        },
+        "constraints": {
+          "vertical": "SCALE",
+          "horizontal": "SCALE"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "size": {
+          "x": 60,
+          "y": 60
+        },
+        "fills": [],
+        "fillGeometry": [],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "42:4",
+        "name": "Vector",
+        "type": "VECTOR",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 636.5,
+          "y": -563.5,
+          "width": 45,
+          "height": 45
+        },
+        "constraints": {
+          "vertical": "SCALE",
+          "horizontal": "SCALE"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            7.5
+          ],
+          [
+            0,
+            1,
+            7.5
+          ]
+        ],
+        "size": {
+          "x": 45,
+          "y": 45
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M5 36.25C7.075 36.25 8.75 34.575 8.75 32.5C8.75 30.425 7.075 28.75 5 28.75C2.925 28.75 1.25 30.425 1.25 32.5C1.25 34.575 2.925 36.25 5 36.25ZM15 25C16.375 25 17.5 23.875 17.5 22.5C17.5 21.125 16.375 20 15 20C13.625 20 12.5 21.125 12.5 22.5C12.5 23.875 13.625 25 15 25ZM15 15C16.375 15 17.5 13.875 17.5 12.5C17.5 11.125 16.375 10 15 10C13.625 10 12.5 11.125 12.5 12.5C12.5 13.875 13.625 15 15 15ZM0 45L45 45L45 40L0 40L0 45ZM5 16.25C7.075 16.25 8.75 14.575 8.75 12.5C8.75 10.425 7.075 8.75 5 8.75C2.925 8.75 1.25 10.425 1.25 12.5C1.25 14.575 2.925 16.25 5 16.25ZM5 26.25C7.075 26.25 8.75 24.575 8.75 22.5C8.75 20.425 7.075 18.75 5 18.75C2.925 18.75 1.25 20.425 1.25 22.5C1.25 24.575 2.925 26.25 5 26.25ZM15 35C16.375 35 17.5 33.875 17.5 32.5C17.5 31.125",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "42:7",
+        "name": "Vector",
+        "type": "VECTOR",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 1950.5,
+          "y": -556,
+          "width": 45,
+          "height": 30
+        },
+        "constraints": {
+          "vertical": "SCALE",
+          "horizontal": "SCALE"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            7.5
+          ],
+          [
+            0,
+            1,
+            15
+          ]
+        ],
+        "size": {
+          "x": 45,
+          "y": 30
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 30L45 30L45 25L0 25L0 30ZM0 17.5L45 17.5L45 12.5L0 12.5L0 17.5ZM0 0L0 5L45 5L45 0L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "2:49",
+        "name": "Rectangle 11",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": 140,
+          "width": 1440,
+          "height": 512
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            729
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 512
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0.8627451062202454,
+              "g": 0.7333333492279053,
+              "b": 0.7333333492279053,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 37C0 16.5655 16.5655 0 37 0L1403 0C1423.43 0 1440 16.5655 1440 37L1440 475C1440 495.435 1423.43 512 1403 512L37 512C16.5654 512 0 495.435 0 475L0 37Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            },
+            "blendMode": "NORMAL",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "radius": 20
+          }
+        ],
+        "cornerRadius": 37,
+        "rectangleCornerRadii": [
+          37,
+          37,
+          37,
+          37
+        ]
+      },
+      {
+        "id": "2:56",
+        "name": "Rectangle 12",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 1374,
+          "y": 447,
+          "width": 232,
+          "height": 57
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            774
+          ],
+          [
+            0,
+            1,
+            1036
+          ]
+        ],
+        "size": {
+          "x": 232,
+          "y": 57
+        },
+        "fills": [
+          {
+            "opacity": 0,
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0.7686274647712708,
+              "g": 0.7686274647712708,
+              "b": 0.7686274647712708,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L232 0L232 57L0 57L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          }
+        ],
+        "strokeWeight": 2,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [
+          {
+            "path": "M0 0L0 -2L-2 -2L-2 0L0 0ZM232 0L234 0L234 -2L232 -2L232 0ZM232 57L232 59L234 59L234 57L232 57ZM0 57L-2 57L-2 59L0 59L0 57ZM0 2L232 2L232 -2L0 -2L0 2ZM230 0L230 57L234 57L234 0L230 0ZM232 55L0 55L0 59L232 59L232 55ZM2 57L2 0L-2 0L-2 57L2 57Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "effects": []
+      },
+      {
+        "id": "2:57",
+        "name": "Rectangle 13",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 1374,
+          "y": 522,
+          "width": 301,
+          "height": 54
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            774
+          ],
+          [
+            0,
+            1,
+            1111
+          ]
+        ],
+        "size": {
+          "x": 301,
+          "y": 54
+        },
+        "fills": [
+          {
+            "opacity": 0,
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 0.7686274647712708,
+              "g": 0.7686274647712708,
+              "b": 0.7686274647712708,
+              "a": 1
+            }
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L301 0L301 54L0 54L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [
+          {
+            "blendMode": "NORMAL",
+            "type": "SOLID",
+            "color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          }
+        ],
+        "strokeWeight": 2,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [
+          {
+            "path": "M0 0L0 -2L-2 -2L-2 0L0 0ZM301 0L303 0L303 -2L301 -2L301 0ZM301 54L301 56L303 56L303 54L301 54ZM0 54L-2 54L-2 56L0 56L0 54ZM0 2L301 2L301 -2L0 -2L0 2ZM299 0L299 54L303 54L303 0L299 0ZM301 52L0 52L0 56L301 56L301 52ZM2 54L2 0L-2 0L-2 54L2 54Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "effects": []
+      },
+      {
+        "id": "5:0",
+        "name": "Rectangle 14&&image=http://kurtwinterdesign.com/wp-content/uploads/2018/05/Deb-Devices@2x.jpg",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": 1413,
+          "width": 1440,
+          "height": 518
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            2002
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 518
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "IMAGE",
+            "scaleMode": "FILL",
+            "imageRef": "0cc4df292114356e9e935a7d5e089203eae0c966"
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L1440 0L1440 518L0 518L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "exportSettings": [
+          {
+            "suffix": "",
+            "format": "PNG",
+            "constraint": {
+              "type": "SCALE",
+              "value": 1
+            }
+          }
+        ],
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.25
+            },
+            "blendMode": "NORMAL",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "radius": 4
+          }
+        ]
+      },
+      {
+        "id": "5:1",
+        "name": "Rectangle 15",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 600,
+          "y": 2136,
+          "width": 1440,
+          "height": 730
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            2725
+          ]
+        ],
+        "size": {
+          "x": 1440,
+          "y": 730
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "IMAGE",
+            "scaleMode": "FILL",
+            "imageRef": "19123c4b33a3f62ebb43fe679795a40a8be6e3f5"
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L1440 0L1440 730L0 730L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "5:2",
+        "name": "Rectangle 16",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 1372,
+          "y": 3696,
+          "width": 668,
+          "height": 500
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            772
+          ],
+          [
+            0,
+            1,
+            4285
+          ]
+        ],
+        "size": {
+          "x": 668,
+          "y": 500
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "IMAGE",
+            "scaleMode": "FILL",
+            "imageRef": "1bc3744c14e737888c098f0a516f2eae68e0b377"
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L668 0L668 500L0 500L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      },
+      {
+        "id": "30:9",
+        "name": "Deb-reasearch-collage2x 1&&image=http://kurtwinterdesign.com/wp-content/uploads/2018/06/Deb-reasearch-collage@2x.jpg",
+        "type": "RECTANGLE",
+        "blendMode": "PASS_THROUGH",
+        "absoluteBoundingBox": {
+          "x": 717,
+          "y": 4434,
+          "width": 1206,
+          "height": 950
+        },
+        "preserveRatio": true,
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "relativeTransform": [
+          [
+            1,
+            0,
+            117
+          ],
+          [
+            0,
+            1,
+            5023
+          ]
+        ],
+        "size": {
+          "x": 1206,
+          "y": 950
+        },
+        "fills": [
+          {
+            "blendMode": "NORMAL",
+            "type": "IMAGE",
+            "scaleMode": "FILL",
+            "imageRef": "8ea5c79c66b6fec27cb9cb8c83d41829a0532d9f"
+          }
+        ],
+        "fillGeometry": [
+          {
+            "path": "M0 0L1206 0L1206 950L0 950L0 0Z",
+            "windingRule": "NONZERO"
+          }
+        ],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "strokeGeometry": [],
+        "effects": []
+      }
+]

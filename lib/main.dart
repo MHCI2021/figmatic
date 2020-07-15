@@ -1,16 +1,21 @@
 import 'package:figmatic/extensions/copy_to_clipboard.dart';
-import 'package:figmatic/extensions/zoom_widget.dart';
-import 'package:figmatic/figma/figma_frame/frame_print.dart';
-import 'package:figmatic/figma/figma_text/text_widget.dart';
+//import 'package:figmatic/extensions/zoom_widget.dart';
+//import 'package:figmatic/figma/figma_frame/frame_print.dart';
+//import 'package:figmatic/figma/figma_text/text_widget.dart';
 import 'package:figmatic/secret.dart';
 import 'package:flutter/material.dart';
 import 'package:framy_annotation/framy_annotation.dart';
 
-import 'figma/figma_api_parser.dart';
+//import 'figma/figma_api_parser.dart';
 import 'package:http/browser_client.dart';
 
-import 'figma/figma_controller.dart';
-import 'figma/utils/widget_utils.dart';
+import 'figma_v2/figma_text/text_widget.dart';
+import 'figma_v3/figma_build.dart';
+import 'figma_v3/figma_parser.dart';
+
+//import 'figma/figma_controller.dart';
+
+//import 'figma/utils/widget_utils.dart';
 
 final Map figmafiles = {
   "a": "rCp1ekGyTPz1K92TE32ZwL",
@@ -26,16 +31,18 @@ final Map figmafiles = {
 // /https://www.figma.com/file/yEpBlZuNn0mMm69I8ktVml/Unit-Tests?node-id=0%3A1&viewport=577%2C427%2C0.697896420955658
 
 void main() async {
-  var api = FigmaApiManager(BrowserClient(), figmaSecret);
-  await api.init(figmafiles["a"]);
-  var figmaView = FigmaViewController();
-  figmaView.init(figmaApiManager: api);
+  var api = FigmaApi(BrowserClient(), figmaSecret);
+  await api.init(figmafiles["unit test"]);
+  // var api = FigmaApiManager(BrowserClient(), figmaSecret);
+  // await api.init(figmafiles["a"]);
+   var figmaView = FigmaViewController2();
+   figmaView.init(figmaApiManager: api);
   runApp(MyApp(figmaViewController: figmaView));//figmaView,));
 }
 
 @FramyApp()
 class MyApp extends StatelessWidget {
-  final FigmaViewController figmaViewController;
+  final FigmaViewController2 figmaViewController;
 
   const MyApp({Key key, this.figmaViewController}) : super(key: key);
   // This widget is the root of your application.
@@ -47,7 +54,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(
+      home:MyHomePage(
         title: 'Flutter Demo Home Page',
         figmaViewController: figmaViewController,
       ),
@@ -56,7 +63,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final FigmaViewController figmaViewController;
+  final FigmaViewController2 figmaViewController;
 
   MyHomePage({Key key, this.title, this.figmaViewController}) : super(key: key);
   final String title;
@@ -66,28 +73,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  String currentScreen;
+  //widget.figmaViewController.buildScreens(0.5, s)
   @override
   Widget build(BuildContext context) {
-    List<Widget> w = [];
-    List<Widget> p = [];
-    List<String> reg = [];
-    List<String> sty = [];
-     widget.figmaViewController.apiManager.screens.forEach(
-                  (key, value) {
-                    w.add(ExpansionTile(
-                      title: Text(key)
-                    ));
-                   } );
-            widget.figmaViewController.apiManager.widgets.forEach(
-                  (key, value) {
-                    print(value);
-                   // reg.add(frameDataToStylizedString(0.4, widget.figmaViewController.apiManager.nodes[value], [], "Stack"));
-                    p.add(ExpansionTile(
-                      title: Text(key)
-                    ));
-                   } );     
     Size s = MediaQuery.of(context).size;
-    
+     List<Widget> pages=[];
+    widget.figmaViewController.apiManager.pages.forEach((key, value) {
+        pages.add(
+          RaisedButton(
+            child: Text(key),
+          onPressed: (){
+            currentScreen = key;
+            setState(() {});
+          },)
+          );       
+    });
+
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -96,27 +99,19 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children:[
             Container(
-              width: 300.0,
+              width: s.width*0.2,
               height: double.infinity,
               color: Colors.grey,
               child: Column(
-                children:[
-                  ExpansionTile(
-                    title:Text("Screens"),
-                    children:w
-                  ),
-                  ExpansionTile(
-                    title:Text("Components"),
-                    children:p
-                  ),
-                ]
+                children:pages
+              
             )
           ),
            Container(
-              width: 300.0,
+              width:s.width*0.2,
               height: double.infinity,
             
-              child: ListView(
+              child: Column(
                 children:[
                 Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -134,56 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: GestureDetector(
                       onTap: (){
-                        copyToClipboard("");
-                      },
-                      child: Container(
-                          color: Colors.grey[800],
-                        child: toRichText(
-                          tx:"" ),
-                      ),
-                    ),
-                  )
-                ]
-            )
-          ),
-            Expanded(child: 
-            widget.figmaViewController.buildScreens(0.4, s),)
-          ]
-        )
-            
-        //  )
-        );
-  }
-}
-
-
-
-
-
-
-
-
-
-// Container(
-//         height: double.infinity,
-//         width: double.infinity,
-//         color: Colors.grey,
-//         child: Zoom(
-//           height: 300.0,
-//           width: 300.0,
-//           child:Container(
-//             color: Colors.blue,
-//             height: double.infinity,
-//             width: double.infinity,
-//             )
-//         )
-
-
-/*
- Expanded(
-                    child: GestureDetector(
-                      onTap: (){
-                        copyToClipboard('''class MDIStar extends StatelessWidget {
+                        copyToClipboard( '''class MDIStar extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
       return Stack(children: [SizedBox( 
@@ -200,11 +146,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),]),;
     }
   }''');
-                      },
+                     },
                       child: Container(
                           color: Colors.grey[800],
                         child: toRichText(
-                          tx: '''#colorblue600##fw700#class#colorgreen700# MDIStar #colorblue#extends #colorgreen#StatelessWidget#colorwhite##/fw# {
+                          tx:'''#colorblue600##fw700#class#colorgreen700# MDIStar #colorblue#extends #colorgreen#StatelessWidget#colorwhite##/fw# {
     #fw700#@override
     #colorgreen#Widget#coloryellow600# build#colorwhite##/fw#(BuildContext context) {
       #fw700##colorpurple#return #colorgreen#SizedBox#colorwhite##/fw#( 
@@ -219,10 +165,58 @@ class _MyHomePageState extends State<MyHomePage> {
             )),
         ),;
     }
-  }#/color###'''),
+  }#/color###''' ),
                       ),
                     ),
                   )
+                ]
+            )
+          ),
+            Container(
+              width: s.width*0.6,
+             child: widget.figmaViewController.buildScreens(0.5, s, currentScreen)
+              ),
+          ]
+        )
+            
+        //  )
+        );
+  }
+}
 
+    // List<Widget> w = [];
+    // List<Widget> p = [];
+    //     List<Widget> j = [];
+    // widget.figmaViewController.apiManager.pages.forEach(
+    //               (key) {
+    //                 j.add(ExpansionTile(
+    //                   title: Text(key)
+    //                 ));
+    //                } );
+    //  widget.figmaViewController.apiManager.screens.forEach(
+    //               (key, value) {
+    //                 w.add(ExpansionTile(
+    //                   title: Text(key)
+    //                 ));
+    //                } );
+    //         widget.figmaViewController.apiManager.widgets.forEach(
+    //               (key, value) {
+    //                 print(value);
+    //                // reg.add(frameDataToStylizedString(0.4, widget.figmaViewController.apiManager.nodes[value], [], "Stack"));
+    //                 p.add(ExpansionTile(
+    //                   title: Text(key)
+    //                 ));
+    //                } ); 
 
-*/
+//  ExpansionTile(
+//                     title:Text("Pages"),
+//                     children:j
+//                   ),
+//                   ExpansionTile(
+//                     title:Text("Screens"),
+//                     children:w
+//                   ),
+//                   ExpansionTile(
+//                     title:Text("Components"),
+//                     children:p
+//                   ),
