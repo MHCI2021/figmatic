@@ -1,12 +1,12 @@
 
 
-import 'package:figmatic/figma/utils/color_utils.dart';
+import 'package:figmatic/figma_v2/utils/color_utils.dart';
 
 import '../../utils.dart';
 import '../utils/figma_utils.dart';
 
 Map<String,dynamic> parseFigmaFrame(Map<String,dynamic> figmaData, ScreenSizeInfo screenSizeInfo, {bool isRoot=false}){
- //  print( '****************************** ${figmaData["name"]} ******************************');
+  // print( '****************************** ${figmaData["name"]} ******************************');
   // figmaData.forEach((key, value) {
   //   if(key!="children"){
   //     //print(key);

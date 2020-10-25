@@ -1,5 +1,5 @@
 
-import 'package:figmatic/figma/figma_frame/frame_print.dart';
+import 'package:figmatic/figma_v2/figma_frame/frame_print.dart';
 import 'package:figmatic/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -67,6 +67,7 @@ class FigmaViewController{
  
   Widget _buildWidget(String nodeID, double pcntSize){// TODO check null
     Map nodeData = safeGet(key: nodeID, map: apiManager.nodes, alt: null);
+    printJson(nodeData);
     if(nodeData==null)return null;
     //print(nodeData);
     String nodeClass = nodeData["class"];

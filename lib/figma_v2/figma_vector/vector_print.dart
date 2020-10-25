@@ -1,7 +1,7 @@
 
 
 
-import 'package:figmatic/figma/utils/color_utils.dart';
+import 'package:figmatic/figma_v2/utils/color_utils.dart';
 import 'package:figmatic/utils.dart';
 import 'package:flutter/material.dart';
 

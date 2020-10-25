@@ -1,31 +1,21 @@
 
+import 'package:figmatic/figma_v3/color_util.dart';
+import 'package:figmatic/utils.dart';
 
-import 'package:figmatic/figma/utils/color_utils.dart';
-
-import '../../utils.dart';
-import '../utils/figma_utils.dart';
-//import '../utils/parse_utils.dart';
-
-
-Map<String,dynamic> parseFigmaText(Map<String,dynamic> figmaData, ScreenSizeInfo screenSizeInfo){
+Map<String,dynamic> parseText(Map<String,dynamic> figmaData){
   //printJson(figmaData);
  try{
   Map<String,dynamic> out={
-    "id":figmaData["id"],
-    "type":figmaData["type"],
-    "class":"text",
-    "name":figmaData["name"],
     "text":figmaData["characters"],
     "styleText":_toTokenizedText(figmaData),
     "style":{//"color":parseTextColor(figmaData),
       "figmaFontSize":figmaData['style']['fontSize'],
       "textAlign":figmaData['style']['textAlignHorizontal'],
       "fontFamily": figmaData['style']["fontFamily"],
+      "textShadow":figmaData.containsKey("effects")?_parseBoxShadow(figmaData["effects"]):null
     },
-    "positioning":screenSizeInfo.toFigmaJson(data: figmaData)
   };
-  //printJson(out);
-  //out["style"]["relativeFontSize"]= autoSize(quoteLength: out["text"].length, parentArea:out["positioning"]["height"]*out["positioning"]["width"]);
+ 
   return out;
  }
  catch(e){
@@ -85,68 +75,30 @@ List<String> _getTokens(Map<String,dynamic> styleData){
     out.add(getColorString(styleData["fills"][0]["color"]));
   return out;
 }
+List _parseBoxShadow(List effects){
+      if(effects==null)return null;
+      List b =[];          
+      effects.forEach((effect){
+                try{
+                  b.add({
+                  "color":getColorString(safeGet(key:"color", map:effect, alt:null)),
+                  //parseEffectsColor(effect),
+                  "offset":{
+                    "x":effect['offset']['x'],
+                    "y":effect['offset']['y']
+                  },
+                  "blurRadius":effect['radius'].toDouble(),
+                });
+                }catch(e){
+                  b.add({
+                  "color":getColorString(safeGet(key:"color", map:effect, alt:null)),
+                  //parseEffectsColor(effect),
+                  "offset":null,
+                  "blurRadius":effect['radius'].toDouble(),
+                });
 
-
-
-// Using text span
-// "Guiding Objective\nI want to build things that improve people’s lives.\n \n\n"
-// #fw700# #color
-
-
-
-/*
-{
-  "id":,
-  "name":,
-  "type":"TEXT",
-  "class": "text",
-  "text":,
-  "style":
-  "color":,
-  "fontFamily":,
-  "fontWeight":,
-  "textAlign":,
-  "figmaFontSize":,
-  "relativeFontSize":
-  "positioning":{
-    "height":
-    "width":
-    "left":
-    "right":
-  }
+                }
+                });
+      return b;
 }
-*/
-/*
-"style": {
-        "fontFamily": "Playfair Display",
-        "fontPostScriptName": "PlayfairDisplay-Regular",
-        "fontWeight": 400,
-        "fontSize": 32,
-        "textAlignHorizontal": "LEFT",
-        "textAlignVertical": "TOP",
-        "letterSpacing": 0,
-        "lineHeightPx": 37.5,
-        "lineHeightPercent": 100,
-        "lineHeightUnit": "INTRINSIC_%"
-      },
-*/
 
-/*{
-          "fontFamily": "Playfair Display",
-          "fontPostScriptName": "PlayfairDisplay-Bold",
-          "fontWeight": 700,
-          "italic": true,
-          "fills": [
-            {
-              "blendMode": "NORMAL",
-              "type": "SOLID",
-              "color": {
-                "r": 0.03656250238418579,
-                "g": 0.13040637969970703,
-                "b": 0.9750000238418579,
-                "a": 1
-              }
-            }
-          ]
-        }*/
-        //flutter run -d chrome

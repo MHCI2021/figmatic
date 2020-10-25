@@ -4,9 +4,6 @@
 
 Project Overview(todo)
 **Relavent Resources**
-- [Lucid Chart](https://app.lucidchart.com/invitations/accept/c0e0ac52-e95d-467d-83f0-0afded2a9faa)
-- [Delaware Makes Slack](https://join.slack.com/t/delawaremakes/shared_invite/zt-ee1k7e45-lseLrkf_Jt_heZG34eBMtA)
-- [Delaware COVID19 3D Printing](https://www.facebook.com/groups/1624749267680924)
 
 - [Figma Plugin Docs](https://www.figma.com/plugin-docs/intro/)
 - [Figma API Docs](https://www.figma.com/plugin-docs/intro/)
@@ -79,62 +76,8 @@ Once you clone this go to
 
 
 
-
-
 ## Project Overview <br/>
 
-
-**Project File Structure**<br>
-- state/: Directory containing the majority of the logic of the site
-        - AppState- the AppState class contains much of the core logic including initiating the database, handling forms, and dealing with user login
-        - service_locator - I use a package called get_it that enables me to get a specific instance of a class from anywhere in the app. The service locator is where I initiate the classes that I want to be able to access. 
-- pages/: All of the website pages are stored in their respective folder. The ___page.dart folder contains the main page component then any page specific components will be in the components folder
-- counters/: Directory models that store count information on the dirrent items(designs, requests etc)
-- main.dart - the app is created in the main.dart file, it is the root of the entire project
-- root_widget.dart - This widget is a wrapper around the current page widget. It includes the appbar and is where overlays are added to the screen.
-- theme.dart - In order to be able to change certian aspects of the design more easily, I've put most of the color and font size info into this file.
-```
-lib
-├── main.dart
-├── root_widget.dart
-├── routes.dart
-├── theme.dart
-├── state
-│   ├── service_locator.dart
-│   ├── app_state.dart
-│   ├── db_interface.dart
-│   ├── forms_tabs.dart
-│   └── docs_repo.dart
-├── pages
-│   ├── about_us
-│   │    └── about_us_page.dart
-│   ├── designs
-│   │    └── designs_page.dart
-│   ├── profile
-│   │    └── profile_page.dart
-│   ├── resources
-│   │    └── resources_page.dart
-│   ├── home
-│   |    ├── home_page.dart
-│   │    └── components
-│   │          ├── count.dart
-│   │          ├── intro.dart
-│   │          ├── maker_section.dart
-│   │          └── request_section.dart
-│   ├── locations
-│   |    ├── locations.dart
-│   │    └── components
-│   │          ├── map_widget.dart
-│   │          ├── claim_tile.dart
-│   │          └── request_tile.dart
-├── counters
-│   ├── design_counts.dart
-│   ├── group_counts.dart
-│   ├── org_counts.dart
-│   └──  request_counts.dart
-
-
-```
 
 
 
