@@ -11,11 +11,11 @@ import 'package:flutter/material.dart';
 
 
 Widget textDataToWidget({Map<String,dynamic> data, double pcntSize, }){
-  String tx = data["content"]["styleText"]??"";
+  String tx = data["styleText"]??"";
  // printJson(data);
-  var fontFam = checkPath(data, ["content","style", "fontFamily"])[1];
-  var shadows = checkPath(data, ["content","style", "textShadow"])[1];
-  double fontSize= data["content"]["style"]["figmaFontSize"]??12.0;
+  var fontFam = checkPath(data, ["style", "fontFamily"])[1];
+  var shadows = checkPath(data, ["style", "textShadow"])[1];
+  double fontSize= data["style"]["figmaFontSize"]??12.0;
 
   return toRichText(
       tx: tx,
