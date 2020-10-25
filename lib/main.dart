@@ -18,8 +18,9 @@ import 'figma_v2/figma_text/text_widget.dart';
 //import 'figma_v4/figma_api.dart';
 //import 'figma/figma_controller.dart';
 //import 'figma/utils/widget_utils.dart';
-
+//https://www.figma.com/file/RTq3F6ZKzuJdgJ9cTpPkuW/Test-Figmagic?node-id=0%3A1
 final Map figmafiles = {
+  "test":"RTq3F6ZKzuJdgJ9cTpPkuW",
   "a": "rCp1ekGyTPz1K92TE32ZwL",
   "unit test": "yEpBlZuNn0mMm69I8ktVml",
   "b": "58ieGqOKtHUp9rwoTBnJBk",
@@ -43,7 +44,7 @@ void main() async {
   //await api2.init(figmafiles["bookApp"]);
   //await Future.delayed(Duration(seconds: 5));
    var api = FigmaApiManager(BrowserClient(), figmaSecret);
-   await api.init(figmafiles["a"]);
+   await api.init(figmafiles["test"]);
   // // var api = FigmaApiManager(BrowserClient(), figmaSecret);
   // // await api.init(figmafiles["a"]);
   //  var figmaView = FigmaViewController2();
