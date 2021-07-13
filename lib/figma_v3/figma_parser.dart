@@ -16,151 +16,151 @@ import 'parsers/content/parse_text.dart';
 import 'parsers/parse_container.dart';
 import 'parsers/content/parse_vector.dart';
 
-
-
 /*
 Each node has it's info + children.
 The info is in the form of json and is only rendered at runtime
 Nodes are rendered in the order of children...starting with screen 1
 */
 
-class FigmaApi{ //extends ChangeNotifier{
+class FigmaApi {
+  //extends ChangeNotifier{
   final String authToken;
   final BaseClient http;
-  Map<String, dynamic> nodes={};
+  Map<String, dynamic> nodes = {};
   Map<String, dynamic> pages = {};
   //Map<String, String> screens = {};
   Map<String, String> widgets = {};
 
   String currentScreenID;
   //List pages = [];
-  bool loading=true;
+  bool loading = true;
   FigmaApi(this.http, this.authToken);
-  
+
   Future<dynamic> _apiCall(String path) async {
-    var response = await http.get(
-        "https://api.figma.com/v1/$path",
-        headers: {
-          "X-FIGMA-TOKEN": this.authToken,
-        });
-        //print(response.body);
+    var response = await http.get("https://api.figma.com/v1/$path", headers: {
+      "X-FIGMA-TOKEN": this.authToken,
+    });
+    //print(response.body);
     return json.decode(response.body);
-  } 
+  }
 
-
-  init(String fileKey,{bool getImages = true}) async {
-    loading=true;
+  init(String fileKey, {bool getImages = true}) async {
+    loading = true;
     var _data = await _apiCall("files/$fileKey?geometry=paths");
-  // print(_data);
+    // print(_data);
     // Add page info
-    _data['document']['children'].forEach((page){
-          pages[page["name"]]={};
-        //// Get `screen info`
-        page['children'].forEach((screen)  {
-              pages[page["name"]][screen["name"]]=screen["id"];
-              _getFigmaItem(
-                data: screen, 
-                figmaOffset: getOffsetPoint(safeGet(key: "absoluteBoundingBox", map: screen, alt: null)),
-                parentPath: []
-              );
+    _data['document']['children'].forEach((page) {
+      pages[page["name"]] = {};
+      //// Get `screen info`
+      page['children'].forEach((screen) {
+        pages[page["name"]][screen["name"]] = screen["id"];
+        _getFigmaItem(
+            data: screen,
+            figmaOffset: getOffsetPoint(
+                safeGet(key: "absoluteBoundingBox", map: screen, alt: null)),
+            parentPath: []);
       });
     });
 
- 
-  // if(getImages)
+    // if(getImages)
     await _addImageUrls(fileKey);
   }
 
-
-_addImageUrls(String fileKey) async {
-   List<String> ids=[];
+  _addImageUrls(String fileKey) async {
+    List<String> ids = [];
     nodes?.forEach((nodeID, nodeData) {
-        if(nodeData.containsKey("isImage")&& nodeData["isImage"]==true){
-         // print(nodeID);
-          ids.add(nodeID);
-        }
+      if (nodeData.containsKey("isImage") && nodeData["isImage"] == true) {
+        // print(nodeID);
+        ids.add(nodeID);
+      }
     });
-   // print(ids);
+    // print(ids);
 
-    if(ids.isNotEmpty){
+    if (ids.isNotEmpty) {
       String urlids = ids.join(",");
       var data = await _apiCall("images/$fileKey?ids=$urlids");
-     // printJson(data);
-      Map<String,dynamic> imagenodes = await data["error"]??data["images"];
+      // printJson(data);
+      Map<String, dynamic> imagenodes = await data["error"] ?? data["images"];
       imagenodes.forEach((nodeID, imageUrl) {
-        if(nodes[nodeID]["content"]==null)nodes[nodeID]["content"]={};
-       // nodes[nodeID]["imageUrl"]= imageUrl;
-       //print(nodes[nodeID]);
-        nodes[nodeID]["content"]["imageUrl"]= imageUrl;
+        if (nodes[nodeID]["content"] == null) nodes[nodeID]["content"] = {};
+        // nodes[nodeID]["imageUrl"]= imageUrl;
+        //print(nodes[nodeID]);
+        nodes[nodeID]["content"]["imageUrl"] = imageUrl;
       });
+    }
   }
-}
 
-  
-
-  _getFigmaItem({
-    Map<String, dynamic> data, 
-    Point figmaOffset,
-    List parentPath
-  }){
-    String type = data["type"];   
-    List<String> frames = ["CANVAS", "FRAME", "COMPONENT","INSTANCE", "GROUP"];
-    List<String> vectors = ["RECTANGLE", "VECTOR", "STAR","LINE","ELLIPSE", "REGULAR_ POLYGON","SLICE"];
+  _getFigmaItem(
+      {Map<String, dynamic> data, Point figmaOffset, List parentPath}) {
+    String type = data["type"];
+    List<String> frames = ["CANVAS", "FRAME", "COMPONENT", "INSTANCE", "GROUP"];
+    List<String> vectors = [
+      "RECTANGLE",
+      "VECTOR",
+      "STAR",
+      "LINE",
+      "ELLIPSE",
+      "REGULAR_ POLYGON",
+      "SLICE"
+    ];
     String figClass;
     bool hasChildren = data.containsKey("children");
     Map<String, dynamic> contentData;
-    if(type =="TEXT"){
-      figClass ="text";
-      contentData=parseText(data);
-    }else if (vectors.contains(type)){
-      figClass ="vector";
-      contentData=parseVector(data);
-    }else if (frames.contains(type)){
-      figClass ="frame";
-      contentData=parseFrame(
-        childrenIds: !hasChildren?null:data["children"].map((childData)=>childData["id"]).toList(),
+    if (type == "TEXT") {
+      figClass = "text";
+      contentData = parseText(data);
+    } else if (vectors.contains(type)) {
+      figClass = "vector";
+      contentData = parseVector(data);
+    } else if (frames.contains(type)) {
+      figClass = "frame";
+      contentData = parseFrame(
+        childrenIds: !hasChildren
+            ? null
+            : data["children"].map((childData) => childData["id"]).toList(),
         size: data["size"],
-        layoutMode: (data.containsKey("layoutMode"))?
-                          data["layoutMode"]=="HORIZONTAL"?"Row":
-                          data["layoutMode"]=="VERTICAL"?"Column"
-                          :"Stack":"Stack",
+        layoutMode: (data.containsKey("layoutMode"))
+            ? data["layoutMode"] == "HORIZONTAL"
+                ? "Row"
+                : data["layoutMode"] == "VERTICAL"
+                    ? "Column"
+                    : "Stack"
+            : "Stack",
       );
-    //   print("---------------------------------------------");
-    //   print("");
-    //   printJson(contentData);
-    //        data.forEach((key, value) {
-    // if(key!="children"){
-    //   //print(key);
-    //   printJsonDynamic(value, key: key);
-    // }
-  //});
+      //   print("---------------------------------------------");
+      //   print("");
+      //   printJson(contentData);
+      //        data.forEach((key, value) {
+      // if(key!="children"){
+      //   //print(key);
+      //   printJsonDynamic(value, key: key);
+      // }
+      //});
     }
 
-
-    nodes[data["id"]]= parseNode(
-      figmaData: data,
-      figmaOffset:figmaOffset,
-      figmaClass: figClass,
-      content: contentData,
-      parentPath: parentPath
-    );
-    if(hasChildren){
+    nodes[data["id"]] = parseNode(
+        figmaData: data,
+        figmaOffset: figmaOffset,
+        figmaClass: figClass,
+        content: contentData,
+        parentPath: parentPath);
+    if (hasChildren) {
       Point _figmaOffset;
       // TODO deal with padding and layout
-     if(nodes[data["id"]]["type"]=="COMPONENT"){
-       widgets[data["name"]]=data["id"];
-       _figmaOffset= getOffsetPoint(safeGet(key: "absoluteBoundingBox", map: data, alt: null));
-     }
-     _figmaOffset= getOffsetPoint(safeGet(key: "absoluteBoundingBox", map: data, alt: null));
-     List l=[data["id"]];
-     l.addAll(parentPath);
-      data["children"].forEach((childData){
-       
+      if (nodes[data["id"]]["type"] == "COMPONENT") {
+        widgets[data["name"]] = data["id"];
+        _figmaOffset = getOffsetPoint(
+            safeGet(key: "absoluteBoundingBox", map: data, alt: null));
+      }
+      _figmaOffset = getOffsetPoint(
+          safeGet(key: "absoluteBoundingBox", map: data, alt: null));
+      List l = [data["id"]];
+      l.addAll(parentPath);
+      data["children"].forEach((childData) {
         _getFigmaItem(
-          data:childData, 
-          figmaOffset: _figmaOffset??figmaOffset,
-          parentPath:l
-          );
+            data: childData,
+            figmaOffset: _figmaOffset ?? figmaOffset,
+            parentPath: l);
       });
     }
   }
@@ -168,41 +168,40 @@ _addImageUrls(String fileKey) async {
 
 ////
 ///
-Map<String,dynamic> parseNode(
-  {
-  Map<String,dynamic> figmaData, 
-  String figmaClass,
-  Point figmaOffset, 
-  List parentPath,
-  Map<String,dynamic> content
-  }){
-
-    Map<String,dynamic> out={
-        "id":figmaData["id"],
-        "type":figmaData["type"],
-        "class": figmaClass,
-        "name":figmaData["name"],
-        "isImage":isImage(figmaData),
-        "parentPath":parentPath??[],
-        "positioning":parsePosition(
-          absoluteBoundingBox: safeGet(key: "absoluteBoundingBox", map: figmaData, alt: null),
-          figmaOffset: figmaOffset
-        ),
-        "container": // check visible
+Map<String, dynamic> parseNode(
+    {Map<String, dynamic> figmaData,
+    String figmaClass,
+    Point figmaOffset,
+    List parentPath,
+    Map<String, dynamic> content}) {
+  Map<String, dynamic> out = {
+    "id": figmaData["id"],
+    "type": figmaData["type"],
+    "class": figmaClass,
+    "name": figmaData["name"],
+    "isImage": isImage(figmaData),
+    "parentPath": parentPath ?? [],
+    "positioning": parsePosition(
+        absoluteBoundingBox:
+            safeGet(key: "absoluteBoundingBox", map: figmaData, alt: null),
+        figmaOffset: figmaOffset),
+    "container": // check visible
         parseContainer(
-          data: figmaData,
-          figmaClass:figmaClass,
-          isVectorPath: (figmaClass=="vector"&&content!=null)
-        ),
-        "content":content,
-      };
-     // printJson(out);
+            data: figmaData,
+            figmaClass: figmaClass,
+            isVectorPath: (figmaClass == "vector" && content != null)),
+    "content": content,
+  };
+  // printJson(out);
   return out;
 }
- 
 
-Point getOffsetPoint(Map<String,dynamic> absoluteBoundingBox, )=>
-  absoluteBoundingBox==null?null:Point(absoluteBoundingBox["x"],absoluteBoundingBox["y"] );
+Point getOffsetPoint(
+  Map<String, dynamic> absoluteBoundingBox,
+) =>
+    absoluteBoundingBox == null
+        ? null
+        : Point(absoluteBoundingBox["x"], absoluteBoundingBox["y"]);
 
 
 

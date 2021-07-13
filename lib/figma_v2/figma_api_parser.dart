@@ -30,7 +30,6 @@ class FigmaApiManager{ //extends ChangeNotifier{
   init(String fileKey,{bool getImages = false}) async {
     loading=true;
     Map<String, dynamic> _data = await _getFile(fileKey);
-   // printJson(_data);
     _data['document']['children'].forEach((page){
       pages.add(page["name"]);
     });

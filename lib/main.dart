@@ -20,6 +20,7 @@ import 'figma_v2/figma_text/text_widget.dart';
 //import 'figma/utils/widget_utils.dart';
 //https://www.figma.com/file/RTq3F6ZKzuJdgJ9cTpPkuW/Test-Figmagic?node-id=0%3A1
 final Map figmafiles = {
+  "test2":"yeB5TUe6J9J9V5Ut0iopAM",
   "test":"RTq3F6ZKzuJdgJ9cTpPkuW",
   "a": "rCp1ekGyTPz1K92TE32ZwL",
   "unit test": "yEpBlZuNn0mMm69I8ktVml",
@@ -35,7 +36,10 @@ final Map figmafiles = {
 //https://www.figma.com/file/98kcWQFBNV616AKjjl96v7/Course-Dashboard-Copy?node-id=1%3A10
 // /https://www.figma.com/file/yEpBlZuNn0mMm69I8ktVml/Unit-Tests?node-id=0%3A1&viewport=577%2C427%2C0.697896420955658
 
+/*
+Re
 
+*/
 
 
 void main() async {
@@ -44,7 +48,7 @@ void main() async {
   //await api2.init(figmafiles["bookApp"]);
   //await Future.delayed(Duration(seconds: 5));
    var api = FigmaApiManager(BrowserClient(), figmaSecret);
-   await api.init(figmafiles["test"]);
+   await api.init(figmafiles["test2"]);
   // // var api = FigmaApiManager(BrowserClient(), figmaSecret);
   // // await api.init(figmafiles["a"]);
   //  var figmaView = FigmaViewController2();
@@ -89,7 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
   FigmaViewController figmaViewController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     figmaViewController = FigmaViewController();
     figmaViewController.init(figmaApiManager: widget.figmaApi);

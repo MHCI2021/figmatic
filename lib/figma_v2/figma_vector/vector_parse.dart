@@ -1,6 +1,4 @@
 
-import 'dart:math';
-
 import 'package:figmatic/figma_v2/utils/color_utils.dart';
 
 import '../../utils.dart';
