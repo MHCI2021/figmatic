@@ -3,6 +3,11 @@
 **A Real Time Figma to Flutter UI Tool**
 
 Project Overview(todo)
+
+[![Watch the video](assets/videoscreenshot.png)](https://www.youtube.com/watch?v=nFJTGY4vMvw)
+
+
+
 **Relavent Resources**
 
 - [Figma Plugin Docs](https://www.figma.com/plugin-docs/intro/)
